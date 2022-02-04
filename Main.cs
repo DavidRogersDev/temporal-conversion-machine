@@ -113,11 +113,7 @@ namespace DateConverter
         }
 
 
-        private void cboTimeZoneChooser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void btnUtcConvert_Click(object sender, EventArgs e)
+        private void btnTab2ConvertDates_Click(object sender, EventArgs e)
         {
             var timeService = new TimeService();
 

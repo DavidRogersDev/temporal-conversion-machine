@@ -116,7 +116,6 @@ namespace DateConverter
             this.cboTab2SourceTimeZoneChooser.Size = new System.Drawing.Size(422, 40);
             this.cboTab2SourceTimeZoneChooser.TabIndex = 2;
             this.cboTab2SourceTimeZoneChooser.ValueMember = "Id";
-            this.cboTab2SourceTimeZoneChooser.SelectedIndexChanged += new System.EventHandler(this.cboTimeZoneChooser_SelectedIndexChanged);
             // 
             // dtpTab2Time
             // 
@@ -145,7 +144,7 @@ namespace DateConverter
             this.btnTab2ConvertDates.TabIndex = 7;
             this.btnTab2ConvertDates.Text = "&Convert";
             this.btnTab2ConvertDates.UseVisualStyleBackColor = true;
-            this.btnTab2ConvertDates.Click += new System.EventHandler(this.btnUtcConvert_Click);
+            this.btnTab2ConvertDates.Click += new System.EventHandler(this.btnTab2ConvertDates_Click);
             // 
             // cboTab2TargetTimeZoneChooser
             // 
