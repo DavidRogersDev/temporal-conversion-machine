@@ -151,7 +151,7 @@ namespace DateConverter
             this.btnTab2ConvertDates.TabIndex = 7;
             this.btnTab2ConvertDates.Text = "&Convert";
             this.btnTab2ConvertDates.UseVisualStyleBackColor = true;
-            this.btnTab2ConvertDates.Click += new System.EventHandler(this.btnTab2ConvertDates_Click);
+            this.btnTab2ConvertDates.Click += new System.EventHandler(btnTab2ConvertDates_Click);
             // 
             // cboTab2TargetTimeZoneChooser
             // 

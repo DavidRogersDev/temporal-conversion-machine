@@ -133,6 +133,26 @@ namespace DateConverter
             txtTab0LocalTickFromMs.Text = targetDate.Ticks.ToString();
         }
 
+        private void btnTab1Convert_Click(object sender, EventArgs e)
+        {
+            var zonedPlace = cboTab1TimeZones.SelectedItem as ZonedPlace;
+
+            var selectedDate = dtpTab1Date.Value.Blend(dtpTab1Time.Value);
+            var sourceDateTimeOffset = new DateTimeOffset(selectedDate, timeService.GetOffsetForZone(zonedPlace.ZoneId, selectedDate));
+
+            var targetDate = timeService.ConvertToZonedOffset(sourceDateTimeOffset, zonedPlace.ZoneId);
+
+            var targetDateutc = targetDate.ToUniversalTime();
+
+            txtTab1LocalDateTime.Text = targetDate.ToDisplayString();
+            txtTab1UTCDateTime.Text = targetDateutc.ToDisplayString();
+
+            txtTab1Milliseconds.Text = targetDate.ToUnixTimeMilliseconds().ToString();
+
+            txtTab1LocalTicks.Text = selectedDate.Ticks.ToString();
+            txtTab1UTCTicks.Text = targetDateutc.Ticks.ToString();
+        }
+
         private void btnTab2ConvertDates_Click(object sender, EventArgs e)
         {
             var sourceZonedPlace = cboTab2SourceTimeZoneChooser.SelectedItem as ZonedPlace;
@@ -155,26 +175,6 @@ namespace DateConverter
             txtTab2UtcTicks.Text = targetUtc.Ticks.ToString();
         }
 
-        private void btnTab1Convert_Click(object sender, EventArgs e)
-        {
-            var zonedPlace = cboTab1TimeZones.SelectedItem as ZonedPlace;
-
-            var selectedDate = dtpTab1Date.Value.Blend(dtpTab1Time.Value);
-            var sourceDateTimeOffset = new DateTimeOffset(selectedDate, timeService.GetOffsetForZone(zonedPlace.ZoneId, selectedDate));
-
-            var targetDate = timeService.ConvertToZonedOffset(sourceDateTimeOffset, zonedPlace.ZoneId);
-
-            var targetDateutc = targetDate.ToUniversalTime();
-
-            txtTab1LocalDateTime.Text = targetDate.ToDisplayString();
-            txtTab1UTCDateTime.Text = targetDateutc.ToDisplayString();
-
-            txtTab1Milliseconds.Text = targetDate.ToUnixTimeMilliseconds().ToString();
-
-            txtTab1LocalTicks.Text = selectedDate.Ticks.ToString();
-            txtTab1UTCTicks.Text = targetDateutc.Ticks.ToString();
-        }
-
         private void btnTab3Convert_Click(object sender, EventArgs e)
         {
             var ticks = long.Parse(txtTab3Ticks.Text, NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite);
@@ -187,14 +187,14 @@ namespace DateConverter
         private void cboTab2SourceTimeZoneChooser_SelectedIndexChanged(object sender, EventArgs e)
         {
             var zonedPlace = cboTab2SourceTimeZoneChooser.SelectedItem as ZonedPlace;
-            var offset = timeService.GetOffsetFromId(zonedPlace.ZoneId);
+            var offset = timeService.GetOffsetForZone(zonedPlace.ZoneId, dtpTab2Date.Value.Blend(dtpTab2Time.Value));
             txtSourceOffset.Text = offset.ToString();
         }
 
         private void cboTab2TargetTimeZoneChooser_SelectedIndexChanged(object sender, EventArgs e)
         {
             var zonedPlace = cboTab2TargetTimeZoneChooser.SelectedItem as ZonedPlace;
-            var offset = timeService.GetOffsetFromId(zonedPlace.ZoneId);
+            var offset = timeService.GetOffsetForZone(zonedPlace.ZoneId, dtpTab2Date.Value.Blend(dtpTab2Time.Value));
             txtTargetOffset.Text = offset.ToString();
         }
     }
