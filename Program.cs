@@ -1,12 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DateConverter.Infrastructure;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 
 namespace DateConverter
 {
@@ -28,8 +24,9 @@ namespace DateConverter
                 .Build();
 
             var defaultCity = configuration.GetSection("DefaultCity").Value;
+            var timeService = new TimeService();
 
-            Application.Run(new Main(defaultCity));
+            Application.Run(new Main(timeService, defaultCity));
         }
     }
 }

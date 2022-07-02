@@ -76,6 +76,10 @@ namespace DateConverter
             this.txtTab1UTCDateTime = new System.Windows.Forms.TextBox();
             this.dtpTab1Date = new System.Windows.Forms.DateTimePicker();
             this.pgeZoneConvert = new System.Windows.Forms.TabPage();
+            this.txtTargetOffset = new System.Windows.Forms.TextBox();
+            this.txtSourceOffset = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtTab2SourceTicks = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMillisecondsFromUtc = new System.Windows.Forms.Label();
@@ -108,6 +112,8 @@ namespace DateConverter
             // 
             // cboTab2SourceTimeZoneChooser
             // 
+            this.cboTab2SourceTimeZoneChooser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTab2SourceTimeZoneChooser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTab2SourceTimeZoneChooser.DisplayMember = "Name";
             this.cboTab2SourceTimeZoneChooser.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboTab2SourceTimeZoneChooser.FormattingEnabled = true;
@@ -116,6 +122,7 @@ namespace DateConverter
             this.cboTab2SourceTimeZoneChooser.Size = new System.Drawing.Size(422, 40);
             this.cboTab2SourceTimeZoneChooser.TabIndex = 2;
             this.cboTab2SourceTimeZoneChooser.ValueMember = "Id";
+            this.cboTab2SourceTimeZoneChooser.SelectedIndexChanged += new System.EventHandler(this.cboTab2SourceTimeZoneChooser_SelectedIndexChanged);
             // 
             // dtpTab2Time
             // 
@@ -138,7 +145,7 @@ namespace DateConverter
             // btnTab2ConvertDates
             // 
             this.btnTab2ConvertDates.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTab2ConvertDates.Location = new System.Drawing.Point(869, 311);
+            this.btnTab2ConvertDates.Location = new System.Drawing.Point(869, 303);
             this.btnTab2ConvertDates.Name = "btnTab2ConvertDates";
             this.btnTab2ConvertDates.Size = new System.Drawing.Size(113, 45);
             this.btnTab2ConvertDates.TabIndex = 7;
@@ -148,6 +155,8 @@ namespace DateConverter
             // 
             // cboTab2TargetTimeZoneChooser
             // 
+            this.cboTab2TargetTimeZoneChooser.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTab2TargetTimeZoneChooser.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTab2TargetTimeZoneChooser.DisplayMember = "Name";
             this.cboTab2TargetTimeZoneChooser.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboTab2TargetTimeZoneChooser.FormattingEnabled = true;
@@ -156,6 +165,7 @@ namespace DateConverter
             this.cboTab2TargetTimeZoneChooser.Size = new System.Drawing.Size(422, 40);
             this.cboTab2TargetTimeZoneChooser.TabIndex = 8;
             this.cboTab2TargetTimeZoneChooser.ValueMember = "Id";
+            this.cboTab2TargetTimeZoneChooser.SelectedIndexChanged += new System.EventHandler(this.cboTab2TargetTimeZoneChooser_SelectedIndexChanged);
             // 
             // txtTab2TargetDate
             // 
@@ -176,7 +186,7 @@ namespace DateConverter
             // txtTab2LocalTicks
             // 
             this.txtTab2LocalTicks.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTab2LocalTicks.Location = new System.Drawing.Point(869, 216);
+            this.txtTab2LocalTicks.Location = new System.Drawing.Point(869, 210);
             this.txtTab2LocalTicks.Name = "txtTab2LocalTicks";
             this.txtTab2LocalTicks.Size = new System.Drawing.Size(294, 39);
             this.txtTab2LocalTicks.TabIndex = 11;
@@ -184,7 +194,7 @@ namespace DateConverter
             // txtTab2UtcTicks
             // 
             this.txtTab2UtcTicks.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTab2UtcTicks.Location = new System.Drawing.Point(869, 265);
+            this.txtTab2UtcTicks.Location = new System.Drawing.Point(869, 258);
             this.txtTab2UtcTicks.Name = "txtTab2UtcTicks";
             this.txtTab2UtcTicks.Size = new System.Drawing.Size(294, 39);
             this.txtTab2UtcTicks.TabIndex = 12;
@@ -345,6 +355,8 @@ namespace DateConverter
             // 
             // cboTab0TimeZone
             // 
+            this.cboTab0TimeZone.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTab0TimeZone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTab0TimeZone.DisplayMember = "Name";
             this.cboTab0TimeZone.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboTab0TimeZone.FormattingEnabled = true;
@@ -503,6 +515,8 @@ namespace DateConverter
             // 
             // cboTab1TimeZones
             // 
+            this.cboTab1TimeZones.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboTab1TimeZones.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTab1TimeZones.DisplayMember = "Name";
             this.cboTab1TimeZones.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboTab1TimeZones.FormattingEnabled = true;
@@ -538,6 +552,10 @@ namespace DateConverter
             // 
             // pgeZoneConvert
             // 
+            this.pgeZoneConvert.Controls.Add(this.txtTargetOffset);
+            this.pgeZoneConvert.Controls.Add(this.txtSourceOffset);
+            this.pgeZoneConvert.Controls.Add(this.label14);
+            this.pgeZoneConvert.Controls.Add(this.txtTab2SourceTicks);
             this.pgeZoneConvert.Controls.Add(this.label2);
             this.pgeZoneConvert.Controls.Add(this.label1);
             this.pgeZoneConvert.Controls.Add(this.lblMillisecondsFromUtc);
@@ -564,11 +582,46 @@ namespace DateConverter
             this.pgeZoneConvert.Text = "Convert Between Zones";
             this.pgeZoneConvert.UseVisualStyleBackColor = true;
             // 
+            // txtTargetOffset
+            // 
+            this.txtTargetOffset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTargetOffset.Location = new System.Drawing.Point(649, 161);
+            this.txtTargetOffset.Name = "txtTargetOffset";
+            this.txtTargetOffset.Size = new System.Drawing.Size(111, 39);
+            this.txtTargetOffset.TabIndex = 24;
+            // 
+            // txtSourceOffset
+            // 
+            this.txtSourceOffset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSourceOffset.Location = new System.Drawing.Point(649, 112);
+            this.txtSourceOffset.Name = "txtSourceOffset";
+            this.txtSourceOffset.Size = new System.Drawing.Size(111, 39);
+            this.txtSourceOffset.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(815, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 32);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Ticks:";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtTab2SourceTicks
+            // 
+            this.txtTab2SourceTicks.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTab2SourceTicks.Location = new System.Drawing.Point(885, 38);
+            this.txtTab2SourceTicks.Name = "txtTab2SourceTicks";
+            this.txtTab2SourceTicks.Size = new System.Drawing.Size(278, 39);
+            this.txtTab2SourceTicks.TabIndex = 21;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(745, 268);
+            this.label2.Location = new System.Drawing.Point(745, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 32);
             this.label2.TabIndex = 20;
@@ -579,7 +632,7 @@ namespace DateConverter
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(723, 219);
+            this.label1.Location = new System.Drawing.Point(723, 213);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 32);
             this.label1.TabIndex = 19;
@@ -715,6 +768,12 @@ namespace DateConverter
             this.btnTab3Convert.UseVisualStyleBackColor = true;
             this.btnTab3Convert.Click += new System.EventHandler(this.btnTab3Convert_Click);
             // 
+            // tabIcons
+            // 
+            this.tabIcons.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.tabIcons.ImageSize = new System.Drawing.Size(16, 16);
+            this.tabIcons.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -795,6 +854,10 @@ namespace DateConverter
         private System.Windows.Forms.TextBox txtTab3DateTime;
         private System.Windows.Forms.Button btnTab3Convert;
         private ImageList tabIcons;
+        private TextBox txtTab2SourceTicks;
+        private Label label14;
+        private TextBox txtTargetOffset;
+        private TextBox txtSourceOffset;
     }
 }
 
