@@ -151,7 +151,7 @@ namespace DateConverter
             this.btnTab2ConvertDates.TabIndex = 7;
             this.btnTab2ConvertDates.Text = "&Convert";
             this.btnTab2ConvertDates.UseVisualStyleBackColor = true;
-            this.btnTab2ConvertDates.Click += new System.EventHandler(btnTab2ConvertDates_Click);
+            this.btnTab2ConvertDates.Click += new System.EventHandler(this.btnTab2ConvertDates_Click);
             // 
             // cboTab2TargetTimeZoneChooser
             // 
@@ -587,6 +587,7 @@ namespace DateConverter
             this.txtTargetOffset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTargetOffset.Location = new System.Drawing.Point(649, 161);
             this.txtTargetOffset.Name = "txtTargetOffset";
+            this.txtTargetOffset.ReadOnly = true;
             this.txtTargetOffset.Size = new System.Drawing.Size(111, 39);
             this.txtTargetOffset.TabIndex = 24;
             // 
@@ -595,6 +596,7 @@ namespace DateConverter
             this.txtSourceOffset.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSourceOffset.Location = new System.Drawing.Point(649, 112);
             this.txtSourceOffset.Name = "txtSourceOffset";
+            this.txtSourceOffset.ReadOnly = true;
             this.txtSourceOffset.Size = new System.Drawing.Size(111, 39);
             this.txtSourceOffset.TabIndex = 23;
             // 
